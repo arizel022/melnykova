@@ -1,0 +1,42 @@
+
+Here is your PantryID! Think of this as your API key, and keep this safe as we won't be sharing it with you again. Once you've saved it somewhere, hit the button below and we'll show you how to add items to your pantry.
+
+c9ccf4df-89ee-40c9-a163-68b2b4b08460
+
+Пентри нужен как замена сервера. На нем удаленно лежит дата. Напрямую без бекенда дату не положить на наш сервер. Варианты без пентри или аналога годятся только для локал-сторедж.
+На пентри такие имена keys
+
+courseDateMeln
+courseDatePyat
+courseDateLesiv
+courseDateBrod
+courseDateOstrAnalog
+courseDateOstrOsnovy
+courseDateBychko
+courseDateOsadcha
+
+Эти имена одинаковы на:
+ - классах, где нужно отобразить дату
+ - на инпутах, где дату нужно вводить
+ - на фор в лейблах, привязанных к этим инпутам
+
+Чтобы отобразить дату, нужно просто создать элемент с указанным классом - дата подтянется.
+
+В мейн джс есть 2 скрипта - для отображения даты с пентри, и для редактирования.
+
+Адреса баскета Пентри
+https://getpantry.cloud/apiv1/public/a4111b39d2345763ade643399088f32a
+https://getpantry.cloud/apiv1/pantry/c9ccf4df-89ee-40c9-a163-68b2b4b08460/basket/myph
+
+
+"courseDateMeln": "жовтень 2026",
+"courseDatePyat": "Незабаром",
+"courseDateLesiv": "Незабаром",
+"courseDateBrod": "2 Березня",
+"courseDateOstrAnalog": "9 березня",
+"courseDateOstrOsnovy": "10 березня",
+"courseDateBychko": "Незабаром",
+"courseDateOsadcha": "Незабаром"
+
+*****
+Если пополнить баскет новыми значениями - можно отображать сразу, по идее менять код джс не нужно. Если нужно, чтобы новая дата редактировалась из админки - нужно доработать скрипт админки, чтобы приходили новые переменные. Или можно попробовать создавать ключи с началом в виде "courseDate" - тогда скрипт будет обрабатывать их сразу.
