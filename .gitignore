@@ -13,5 +13,7 @@ build/
 gh/
 loc/
 app/
+gulpfile.js
+package.json
 
 project-start.txt
