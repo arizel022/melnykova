@@ -4,19 +4,43 @@
 @import 'global';
 
 @import 'lego/header';
-
-@import 'page/main';
-
 @import 'lego/footer';
+@import 'page/main';
+@import 'page/projects';
 
 
 
 
 .index {
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        z-index: -2;
+        inset: 0;
+        pointer-events: none;
+        background-image: url('../images/noise.png');
+        background-repeat: repeat;
+        background-size: 100px 100px;
+        opacity: 0.5;
+
+    }
 
     &:after {
+        // градиент
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -3;
         background: linear-gradient(219deg, #FFF 0%, #E2E2E2 71.00%, #D8D8D8 100%);
     }
+
+
+
 
     .header__mobile-logo--light {
 
@@ -32,7 +56,7 @@
     &:before {
         content: none;
     }
-    
+
     &:after {
         background: linear-gradient(223deg, #FFF 16.15%, #D8D8D8 100%);
     }
@@ -86,7 +110,7 @@
         &:last-child {
             margin-top: 100px;
 
-            @media (max-width: 768px)  {
+            @media (max-width: 768px) {
                 margin-top: 40px;
             }
         }
@@ -198,7 +222,7 @@
         &:not(:last-child) {
             margin-bottom: 3px;
 
-            @media (max-width: 768px)  {
+            @media (max-width: 768px) {
                 margin-bottom: 20px;
             }
         }
@@ -220,7 +244,7 @@
         gap: 15px;
         margin-bottom: 200px;
 
-        @media (max-width: 768px)  {
+        @media (max-width: 768px) {
             flex-wrap: wrap;
             gap: 10px;
             margin-bottom: 80px;
@@ -244,7 +268,7 @@
         display: block;
         margin-bottom: 25px;
 
-        @media (max-width: 768px)  {
+        @media (max-width: 768px) {
             font-size: 130px;
         }
     }
@@ -253,27 +277,13 @@
         font-weight: 300;
         font-size: 40px;
 
-        @media (max-width: 768px)  {
+        @media (max-width: 768px) {
             font-size: 30px;
         }
     }
 }
 
 
-.projects-page {
-    &:after {
-        background: linear-gradient(167deg, #FFF 0%, #D8D8D8 18.46%, #D8D8D8 100%);
-    }
-}
-
-.projects-preview-hero {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 865px;
-    //ПОМЕНЯТЬ ВЫСОТУ НА ВХ
-    padding-top: 140px;
-}
 
 
 
@@ -282,7 +292,7 @@
     margin-bottom: 80px;
     position: relative;
 
-    & + .project-content__item {
+    &+.project-content__item {
         margin-top: 0;
     }
 }

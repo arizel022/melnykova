@@ -5,7 +5,12 @@
     width: 100%;
     color: $white;
     overflow: hidden;
+    pointer-events: none;
 
+    a,
+    button {
+        pointer-events: auto;
+    }
 
     @media (max-width: 768px),
     (max-width: 768px) and (orientation: landscape) {
@@ -154,7 +159,7 @@
 
     &.active {
         .header__menu {
-        transform: translateX(0);
+            transform: translateX(0);
         }
     }
 }
