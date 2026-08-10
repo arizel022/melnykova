@@ -12,6 +12,6 @@ dist/
 build/
 gh/
 loc/
-images/
+app/
 
 project-start.txt
