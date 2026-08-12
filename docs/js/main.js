@@ -27,32 +27,6 @@
 })();
 
 
-
-(() => {
-    const header = document.querySelector('.header');
-    if (!header) return;
-
-    let ticking = false;
-
-    function updatePosition() {
-        header.style.top = `${window.scrollY}px`;
-        ticking = false;
-    }
-
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(updatePosition);
-            ticking = true;
-        }
-    }, { passive: true });
-
-    updatePosition(); // стартовая позиция при загрузке
-})();
-
-
-
-
-
 (() => {
     const projects = document.querySelector('.projects');
     const buttons = document.querySelectorAll('.submenu__button');
