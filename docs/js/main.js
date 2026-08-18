@@ -4,16 +4,23 @@
     const header = document.querySelector('.header');
     if (!header) return;
 
+
+
+
     let ticking = false;
+    const ACTIVE_THRESHOLD = 350; // порог в пикселях, после которого header получает .active
 
     const onScroll = () => {
-        if (window.scrollY > 0) {
+        if (window.scrollY > ACTIVE_THRESHOLD) {
             header.classList.add('active');
         } else {
             header.classList.remove('active');
         }
         ticking = false;
     };
+
+
+
 
     window.addEventListener('scroll', () => {
         if (!ticking) {
@@ -27,33 +34,38 @@
 })();
 
 
-(() => {
-    const projects = document.querySelector('.projects');
-    const buttons = document.querySelectorAll('.submenu__button');
-    const resetButton = document.querySelector('.projects__title-button');
-
-    if (!projects || !buttons.length) return;
-
-    const DIRECTIONS = ['earth', 'fire', 'air', 'water'];
+function initSwitcher(root) {
+    const triggers = Array.from(root.querySelectorAll('.switcher__trigger'));
+    const resetButton = root.querySelector('.switcher__reset-button');
+    const panels = root.querySelectorAll('.switcher__content, .switcher__redirects');
+    const initialLayer = root.querySelector('.switcher__bg');
     const TRANSITION_MS = 1800; // должно совпадать с transition в SCSS
 
+    if (!triggers.length || !initialLayer) return;
+
+    // модификатор фонового слоя (напр. switcher__bg--projects) специфичен для конкретной
+    // страницы и определяет пути к картинкам — берём его с уже существующего в разметке
+    // слоя, чтобы динамически создаваемые слои подхватывали нужные фоны
+    const bgModifier = Array.from(initialLayer.classList)
+        .find((cls) => cls.startsWith('switcher__bg--'));
+
+    const ids = triggers.map((trigger) => trigger.id).filter(Boolean);
+
     let selectedId = null;
-    let activeLayer = projects.querySelector('.projects__bg.is-active');
+    let activeLayer = root.querySelector('.switcher__bg.is-active');
 
     function currentDirection(layer) {
-        return DIRECTIONS.find((d) => layer.classList.contains(d)) || null;
+        return ids.find((id) => layer.classList.contains(id)) || null;
     }
 
     function swapBackground(id) {
-        // уже показываем нужное направление — не плодим лишний слой
         if (activeLayer && currentDirection(activeLayer) === id) return;
 
         const layer = document.createElement('div');
-        layer.className = 'projects__bg';
-        if (DIRECTIONS.includes(id)) {
-            layer.classList.add(id);
-        }
-        projects.appendChild(layer); // последний в DOM — рисуется поверх остальных фон-слоёв
+        layer.className = 'switcher__bg';
+        if (bgModifier) layer.classList.add(bgModifier);
+        if (id) layer.classList.add(id);
+        root.appendChild(layer); // последний в DOM — рисуется поверх остальных фон-слоёв
 
         void layer.offsetWidth; // форсируем reflow — фиксируем чистый старт (opacity: 0)
 
@@ -62,36 +74,38 @@
 
         requestAnimationFrame(() => {
             layer.classList.add('is-active');
-            if (previousLayer) {
-                previousLayer.classList.remove('is-active');
-            }
+            if (previousLayer) previousLayer.classList.remove('is-active');
         });
 
         if (previousLayer) {
             setTimeout(() => {
-                // удаляем старый слой из DOM, только если он и правда больше не активен
-                // (на случай если пользователь успел вернуться к нему раньше срабатывания таймера)
-                if (!previousLayer.classList.contains('is-active')) {
-                    previousLayer.remove();
-                }
+                if (!previousLayer.classList.contains('is-active')) previousLayer.remove();
             }, TRANSITION_MS + 50);
         }
     }
 
+
+
+
+
+
+
     function applyState(id, isActive) {
-        projects.classList.remove(...DIRECTIONS);
-        if (id) projects.classList.add(id);
-        projects.classList.toggle('active', isActive);
+        root.classList.toggle('active', isActive);
         swapBackground(id);
+        panels.forEach((panel) => {
+            const isDefault = panel.classList.contains('switcher__content--default');
+            panel.classList.toggle('is-active', id !== null ? panel.classList.contains(id) : isDefault);
+        });
     }
 
-    buttons.forEach((button) => {
-        const id = button.id;
-        if (!DIRECTIONS.includes(id)) return;
+    triggers.forEach((trigger) => {
+        const id = trigger.id;
+        if (!id) return;
 
-        button.addEventListener('mouseenter', () => applyState(id, false));
-        button.addEventListener('mouseleave', () => applyState(selectedId, selectedId !== null));
-        button.addEventListener('click', () => {
+        trigger.addEventListener('mouseenter', () => applyState(id, false));
+        trigger.addEventListener('mouseleave', () => applyState(selectedId, selectedId !== null));
+        trigger.addEventListener('click', () => {
             selectedId = id;
             applyState(id, true);
         });
@@ -103,7 +117,14 @@
             applyState(null, false);
         });
     }
-})();
+
+    // стартовое состояние — до любого взаимодействия показываем дефолтную панель,
+    // если она есть на странице (безопасно и там, где её нет — просто ничего не подсветит)
+    applyState(null, false);
+}
+
+document.querySelectorAll('.switcher').forEach(initSwitcher);
+
 
 
 
