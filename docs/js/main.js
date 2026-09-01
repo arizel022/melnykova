@@ -3,10 +3,6 @@
 (() => {
     const header = document.querySelector('.header');
     if (!header) return;
-
-
-
-
     let ticking = false;
     const ACTIVE_THRESHOLD = 350; // порог в пикселях, после которого header получает .active
 
@@ -122,20 +118,32 @@ function initSwitcher(root) {
     // если она есть на странице (безопасно и там, где её нет — просто ничего не подсветит)
     applyState(null, false);
 }
-
 document.querySelectorAll('.switcher').forEach(initSwitcher);
 
+// Элемент mobile-menu__button. При нажатии
+//  - header получает класс mobile-active
+//  - mobile-menu__button получает класс active
+//  - home получает класс lock
+//  - mobile-menu__body получает класс active
 
+// При повторном нажатии все теряют свои классы.
 
+(() => {
+    const header = document.querySelector('.header');
+    const menuButton = document.querySelector('.mobile-menu__button');
+    const home = document.querySelector('.home');
+    const menuBody = document.querySelector('.mobile-menu__body');
 
+    if (!menuButton) return;
 
-$(function () {
-    $('.header__burger').click(function () {
-        $(this).toggleClass('active');
-        $('.header__list').toggleClass('active');
-        $('body').toggleClass('lock');
+    menuButton.addEventListener('click', () => {
+        const isActive = menuButton.classList.toggle('active');
+
+        header?.classList.toggle('mobile-active', isActive);
+        home?.classList.toggle('lock', isActive);
+        menuBody?.classList.toggle('active', isActive);
     });
-});
+})();
 
 
 
