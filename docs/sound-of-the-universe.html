@@ -6,44 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-
-
-    <!-- <base href="/anna/" /> -->
-    <base href="/" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    
+    <!-- <base href="/" /> -->
     <title>Project "Sound of the Universe" - photographer Hanna Melnykova</title>
-    <link rel="stylesheet" href="css/projects.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
 </head>
 
 
 <body class="home soundOfTheUniverse">
-
-    <header class="header">
-        <div class="container">
-            <nav class="header__menu">
-                <a class="header__mobile-logo header__mobile-logo--light" href="index">melnykova</a>
-                <button class="header__burger" type="button">
-                    <span class="sr-only">open main menu</span>
-                </button>
-                <ul class="header__list">
-                    <li class="header__item">
-                        <a class="header__link" href="index">Homepage</a>
-                    </li>
-                    <li class="header__item">
-                        <a class="header__link" href="about">About me</a>
-                    </li>
-                    <li class="header__item">
-                        <a class="header__link" href="projects">Projects</a>
-                    </li>
-                    <li class="header__item">
-                        <a class="header__link" href="index.html#contact">Contact me</a>
-                    </li>
-                </ul>
-
-            </nav>
-        </div>
-    </header>
 
     <main>
         <section class="project-hero project-hero--sound">
@@ -80,16 +52,6 @@
 
             </div>
         </section>
-        <div class="back">
-            <div class="container">
-                <a class="back__link" href="projects">
-                    <svg class="back__icon" width="26" height="26">
-                        <use href="images/sprite.svg#icon-chevron"></use>
-                    </svg>
-                    back
-                </a>
-            </div>
-        </div>
 
         <section class="project-content">
             <div class="container">
@@ -106,8 +68,6 @@
                             <figcaption class="figcaption">Portrait №</figcaption>
                         </figure>
                     </li>
-
-
                     <!-- ОТСЮДА НАчинается тестовая лишка -->
 
                     <li class="project-content__item project-content__item--overlap boo">
@@ -132,7 +92,7 @@
                     <!-- конец тестовой лишки -->
 
                     <!-- ОТСЮДА НАчинается трек-маркер -->
-                    <div class="player">
+                    <div class="player none">
 
                         <div class="player__item">
                             <p class="player__track-name">Track N1</p>
@@ -147,8 +107,6 @@
                         </div>
                     </div>
                     <!-- конец трек-маркера -->
-
-
 
                     <li class="project-content__item project-content__item--overlap">
                         <figure class="project-content__figure">
@@ -294,19 +252,6 @@
             </div>
         </div>
 
-        <section class="section contact">
-            <div class="container">
-                <div class="contact__inner">
-                    <a class="title title--line title--light" href="index.html#contact">Contact me</a>
-                </div>
-                <div class="contact__inner">
-                    <div class="contact__logo-wrapper contact__logo-wrapper--light">
-                        <img class="contact__logo" src="images/logos/art-east-white.svg" alt="logo Art East" width="213" height="71">
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </main>
     <footer class="footer">
     <div class="container">
@@ -334,21 +279,107 @@
 
         <div class="footer__bottom">
             <p class="footer__copy">
-                <span class="lato">All rights reserved</span>
+                <span class="">All rights reserved</span>
                 <span class="bold">©</span>
-                <span>Hanna Melnykova 2023</span>
+                <span>Hanna Melnykova 2026</span>
             </p>
-            <a class="footer__designer-link lato" href="https://www.linkedin.com/in/yana-kovernyk-567b13244/" target="_blank">
+            <a class="footer__designer-link" href="https://www.linkedin.com/in/yana-kovernyk-567b13244/" target="_blank">
                 design by Yana Kovernyk
             </a>
         </div>
 
-        <svg class="footer__name" width="1387" height="99">
+        <!-- <svg class="footer__name" width="1387" height="99">
             <use href="images/sprite.svg#icon-hanna"></use>
-        </svg>
+        </svg> -->
     </div>
 </footer>
+    <header class="header">
+    <div class="container">
+        <nav class="header__menu">
 
+            <div class="header__animated-wrapper">
+                <a class="logo header__logo" href="index">
+                    Hanna
+                    <br>
+                    Melnykova
+                </a>
+                <ul class="header__list">
+                    <li class="header__item">
+                        <a class="header__link" href="practice">Practice</a>
+                    </li>
+                    <li class="header__item">
+                        <a class="header__link" href="projects">Projects</a>
+                    </li>
+                    <li class="header__item">
+                        <a class="header__link" href="research-and-writings">Research & writings</a>
+                    </li>
+                    <li class="header__item">
+                        <a class="header__link" href="about">About</a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="header__item header__item--contact">
+                <a class="header__link" href="contacts">Contact me</a>
+            </div>
+
+            <div class="mobile-menu">
+                <button class="mobile-menu__button" type="button">
+                    <span class="mobile-menu__button-txt mobile-menu__button-txt--menu">menu</span>
+                    <span class="mobile-menu__button-txt mobile-menu__button-txt--back">back</span>
+                </button>
+
+                <div class="mobile-menu__body">
+                    <ul class="mobile-menu__list">
+                        <li class="mobile-menu__item">
+                            <a href="practice" class="mobile-menu__link">
+                                Practice
+                                <svg class="icon-fill" width="20" height="18">
+                                    <use href="images/sprite.svg#icon-arrow"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="mobile-menu__item">
+                            <a href="projects" class="mobile-menu__link">
+                                Projects
+                                <svg class="icon-fill" width="20" height="18">
+                                    <use href="images/sprite.svg#icon-arrow"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="mobile-menu__item">
+                            <a href="research-and-writings" class="mobile-menu__link">
+                                Research & writings
+                                <svg class="icon-fill" width="20" height="18">
+                                    <use href="images/sprite.svg#icon-arrow"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="mobile-menu__item">
+                            <a href="about" class="mobile-menu__link">
+                                About
+                                <svg class="icon-fill" width="20" height="18">
+                                    <use href="images/sprite.svg#icon-arrow"></use>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="mobile-menu__item">
+                            <a href="contacts" class="mobile-menu__link">
+                                Contact me
+                                <svg class="icon-fill" width="20" height="18">
+                                    <use href="images/sprite.svg#icon-arrow"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </nav>
+    </div>
+</header>
 
     <script src="js/main.min.js"></script>
 </body>
